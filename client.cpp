@@ -11,7 +11,8 @@
 #include <math.h>
 using namespace std;
 
-char *ip_server = "127.0.0.1" ;
+// char *ip_server = "10.0.5.3" 
+char *ip_server = "127.0.0.1" ;;
 
 int kom = 0;
 int main(int argc, char const *argv[]) 
@@ -38,7 +39,7 @@ int main(int argc, char const *argv[])
 	char buffer[1024] = {0}; 
 	
 
-	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) 
+	if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) < 0) 
 	{ 
 		printf("\n Socket creation error \n"); 
 		return -1; 
@@ -60,16 +61,20 @@ int main(int argc, char const *argv[])
 		return -1; 
 	} 
 	if (tilt_kom ==1 ) robot="31";   //berarti robot tiga nilai 1
-	else robot = "30";
+	else robot = "10";
 
 
 // ====================================================================
 
 	
-	data_all = robot+","+tilt.str()+","+pan.str();		// gabung semua ke string
+	data_all = robot+","+tilt.str()+","+pan.str()+"30";		// gabung semua ke string
 	data_send = &data_all[0];					// konvert ke chart*
 
 	send(sock , data_send , strlen(data_send) , 0); 
+	int n, len; 
+	// valread = recvfrom(sock, (char *)buffer, 1024,  
+    //             MSG_WAITALL, (struct sockaddr *) &serv_addr, 
+    //             &len);
 	valread = read( sock , buffer, 1024); 
 
 	cout<<buffer<<endl;

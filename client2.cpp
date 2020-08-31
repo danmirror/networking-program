@@ -5,9 +5,12 @@
 #include <unistd.h> 
 #include <string.h> 
 #include <iostream>
-#define PORT 8088
+#include <sstream>
+// #define PORT 8088
+#define PORT 8124
 #include <math.h>
 using namespace std;
+
 char *ip_server = "127.0.0.1" ;
 
 int kom = 0;
@@ -15,13 +18,20 @@ int main(int argc, char const *argv[])
 
 {	
 	int tilt_kom = 1;
+	int int_tilt = 90;
+	int int_pan = 40;
 
 	string buf_eksekusi;
-	char data[2] ;
-	//data[0] = {1,2};
+	
 	int sock = 0, valread; 
-	char *robot ;
-
+	char *data_send;
+	string data_all ;
+	string robot;
+	// int to string
+	ostringstream tilt,pan;
+	tilt<<int_tilt;
+	pan<<int_pan;
+	
 	struct sockaddr_in serv_addr; 
 	
 	
@@ -49,19 +59,24 @@ int main(int argc, char const *argv[])
 		printf("\nConnection Failed \n"); 
 		return -1; 
 	} 
-	if (tilt_kom ==1 ) robot="21";   //berarti robot tiga nilai 1
-	else robot = "20";
+	if (tilt_kom ==1 ) robot="31";   //berarti robot tiga nilai 1
+	else robot = "10";
+
+
+// ====================================================================
+
 	
-	
-	//sprintf(data,"%c",tilt_kom);
-	send(sock , robot , strlen(robot) , 0 ); 
+	data_all = robot+","+tilt.str()+","+pan.str();		// gabung semua ke string
+	data_send = &data_all[0];					// konvert ke chart*
+
+	send(sock , data_send , strlen(data_send) , 0); 
 	valread = read( sock , buffer, 1024); 
 
 	cout<<buffer<<endl;
 	
 	buf_eksekusi = buffer;
 	//pengiriman adalah robot yang tidak berhenti/ yang melihat bola duluan
-	if (buf_eksekusi == "dua"||buf_eksekusi == "null"){
+	if (buf_eksekusi == "tiga"||buf_eksekusi == "null"){
 		kom = 0;
 		cout<<"robot lain berhenti"<<endl;
 	}
