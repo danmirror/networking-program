@@ -1,5 +1,5 @@
-# c
-> networking program
+# networking program
+> using C
 
 ### Author
 > <a href="https://me-danuandrean.github.io/"> Danu Andrean</a>
