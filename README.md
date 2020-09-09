@@ -1,4 +1,4 @@
-# networking program
+# Networking Program
 > using C
 
 ### Author
