@@ -1,11 +1,7 @@
 #include <iostream>
-#include <string.h> 
-#include <math.h>
-#include <sstream>
-#include <stdio.h> 
-#include <unistd.h> 
-using namespace std;
+
 int main(){
-    int data=10;
-    string a = data.str();
+    int nilai_a=19;
+    int nilai_b=12;
+    std::cout<<nilai_a+nilai_b;
 }

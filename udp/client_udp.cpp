@@ -1,4 +1,5 @@
 // Client side C/C++ program to demonstrate Socket programming 
+
 #include <stdio.h> 
 #include <sys/socket.h> 
 #include <arpa/inet.h> 
@@ -6,7 +7,7 @@
 #include <string.h> 
 #include <iostream>
 #include <sstream>
-// #define PORT 8088
+
 #define PORT 8124
 #include <math.h>
 using namespace std;
@@ -32,7 +33,7 @@ int main(int argc, char const *argv[])
 	ostringstream tilt,pan;
 	tilt<<int_tilt;
 	pan<<int_pan;
-	
+
 	struct sockaddr_in serv_addr; 
 	
 	
@@ -79,15 +80,15 @@ int main(int argc, char const *argv[])
 
 	cout<<buffer<<endl;
 	
-	buf_eksekusi = buffer;
-	//pengiriman adalah robot yang tidak berhenti/ yang melihat bola duluan
-	if (buf_eksekusi == "tiga"||buf_eksekusi == "null"){
-		kom = 0;
-		cout<<"robot lain berhenti"<<endl;
-	}
-	else {
-		kom = 1;
-	}	
-	return kom;
+	// buf_eksekusi = buffer;
+	// //pengiriman adalah robot yang tidak berhenti/ yang melihat bola duluan
+	// if (buf_eksekusi == "tiga"||buf_eksekusi == "null"){
+	// 	kom = 0;
+	// 	cout<<"robot lain berhenti"<<endl;
+	// }
+	// else {
+	// 	kom = 1;
+	// }	
+	// return kom;
 } 
 

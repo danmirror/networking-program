@@ -17,6 +17,7 @@ int kom = 0;
 int main(int argc, char const *argv[]) 
 
 {	
+	
 	int tilt_kom = 1;
 	int int_tilt = 90;
 	int int_pan = 40;

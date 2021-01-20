@@ -6,9 +6,10 @@
 #include <netinet/in.h> 
 #include <string.h> 
 #include <iostream>
-#define PORT 8088
+#define PORT 8124
 
 using namespace std;
+
 void komunikasi(){
 	
 	string buf; 
